@@ -28,6 +28,9 @@ namespace Api.Popis2020
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Scoped  -> po korisnik pravi request, za sekoe injectiranje ne se pravi nova instaca, nego samo edna instaca
+            //Transient -> po korisnik pravi request, za sekoe injectiranje se pravi nova instaca
+            //Singleton -> Prv Request pravi instance i se deli na site ostanati korisnici za site requesti
             services.AddScoped<IGenericRepository<Grad>, GenericRepository<Grad>>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
